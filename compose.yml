@@ -1,0 +1,12 @@
+---
+version: "3"
+services: 
+  xclock:
+    user: 1000:1000
+    build: .
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment: 
+      DISPLAY:
+      FOO: $(id --user):$(id --group) 
+    command: env && xclock
